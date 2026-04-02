@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1400" viewBox="0 0 2200 1400">
+  <defs>
+    <style>
+      .entity { fill: #e8f0ff; stroke: #2f5fb3; stroke-width: 2; }
+      .entityText { font: 700 20px Arial, sans-serif; fill: #1f3f7a; text-anchor: middle; dominant-baseline: middle; }
+      .rel { fill: #1f1f1f; stroke: #111; stroke-width: 2; }
+      .relText { font: 700 18px Arial, sans-serif; fill: #fff; text-anchor: middle; dominant-baseline: middle; }
+      .attr { fill: #bdf2c8; stroke: #2f8f44; stroke-width: 2; }
+      .attrText { font: 600 15px Arial, sans-serif; fill: #114d22; text-anchor: middle; dominant-baseline: middle; }
+      .key { text-decoration: underline; }
+      .partialKey { text-decoration: underline; stroke-dasharray: 4 3; }
+      .line { stroke: #888; stroke-width: 2; fill: none; }
+      .lineTotal { stroke: #666; stroke-width: 5; fill: none; opacity: 0.7; }
+      .label { font: 600 14px Arial, sans-serif; fill: #222; }
+      .small { font: 12px Arial, sans-serif; fill: #333; }
+      .dash { stroke-dasharray: 8 6; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="2200" height="1400" fill="#f7f7f7"/>
+
+  <!-- Entities -->
+  <rect class="entity" x="120" y="220" width="220" height="90" rx="2"/>
+  <text class="entityText" x="230" y="265">CUSTOMER</text>
+
+  <rect class="entity" x="520" y="220" width="220" height="90" rx="2"/>
+  <text class="entityText" x="630" y="265">ACCOUNT</text>
+
+  <rect class="entity" x="900" y="220" width="220" height="90" rx="2"/>
+  <text class="entityText" x="1010" y="265">BRANCH</text>
+
+  <rect class="entity" x="1280" y="220" width="220" height="90" rx="2"/>
+  <text class="entityText" x="1390" y="265">LOAN</text>
+
+  <rect class="entity" x="1660" y="220" width="220" height="90" rx="2"/>
+  <text class="entityText" x="1770" y="265">TRANSFER</text>
+
+  <rect class="entity" x="1660" y="560" width="220" height="90" rx="2"/>
+  <text class="entityText" x="1770" y="605">TRANSACTION</text>
+
+  <!-- Weak entity: double rectangle -->
+  <rect class="entity" x="1280" y="560" width="220" height="90" rx="2"/>
+  <rect class="entity" x="1288" y="568" width="204" height="74" rx="2" fill="none"/>
+  <text class="entityText" x="1390" y="605">LOAN_PAYMENT</text>
+
+  <!-- Relationships -->
+  <polygon class="rel" points="430,265 470,235 510,265 470,295"/>
+  <text class="relText" x="470" y="265">OWNS</text>
+
+  <polygon class="rel" points="810,265 850,235 890,265 850,295"/>
+  <text class="relText" x="850" y="265">LINKED_AT</text>
+
+  <polygon class="rel" points="1200,265 1240,235 1280,265 1240,295"/>
+  <text class="relText" x="1240" y="265">BORROWS</text>
+
+  <polygon class="rel" points="1770,430 1810,400 1850,430 1810,460"/>
+  <text class="relText" x="1810" y="430">REFLECTS</text>
+
+  <polygon class="rel" points="1560,605 1600,575 1640,605 1600,635"/>
+  <text class="relText" x="1600" y="605">RECORDS</text>
+
+  <polygon class="rel" points="1770,335 1810,305 1850,335 1810,365"/>
+  <text class="relText" x="1810" y="335">SENDS</text>
+
+  <polygon class="rel" points="1640,335 1680,305 1720,335 1680,365"/>
+  <text class="relText" x="1680" y="335">RECEIVES</text>
+
+  <!-- Weak relationship (double diamond) -->
+  <polygon class="rel" points="1480,605 1520,575 1560,605 1520,635"/>
+  <polygon class="rel" points="1488,605 1520,582 1552,605 1520,628" fill="none" stroke="#111" stroke-width="2"/>
+  <text class="relText" x="1520" y="605">HAS_PAYMENT</text>
+
+  <!-- Core relationship lines + min-max -->
+  <line class="lineTotal" x1="340" y1="265" x2="430" y2="265"/>
+  <line class="line" x1="340" y1="265" x2="430" y2="265"/>
+  <text class="label" x="360" y="250">(1,N)</text>
+  <text class="label" x="395" y="287">1:N</text>
+
+  <line class="lineTotal" x1="510" y1="265" x2="520" y2="265"/>
+  <line class="line" x1="510" y1="265" x2="520" y2="265"/>
+  <text class="label" x="515" y="250">(1,1)</text>
+
+  <line class="line" x1="740" y1="265" x2="810" y2="265"/>
+  <text class="label" x="760" y="250">(1,N)</text>
+  <text class="label" x="772" y="287">M:N</text>
+  <line class="line" x1="890" y1="265" x2="900" y2="265"/>
+  <text class="label" x="895" y="250">(1,N)</text>
+
+  <line class="line" x1="1120" y1="265" x2="1200" y2="265"/>
+  <text class="label" x="1140" y="250">(0,N)</text>
+  <text class="label" x="1155" y="287">1:N</text>
+  <line class="lineTotal" x1="1280" y1="265" x2="1280" y2="265"/>
+  <line class="line" x1="1280" y1="265" x2="1280" y2="265"/>
+  <text class="label" x="1260" y="250">(1,1)</text>
+
+  <line class="lineTotal" x1="1500" y1="605" x2="1480" y2="605"/>
+  <line class="line" x1="1500" y1="605" x2="1480" y2="605"/>
+  <text class="label" x="1450" y="590">(1,N)</text>
+  <text class="label" x="1450" y="625">1:N</text>
+  <line class="lineTotal" x1="1560" y1="605" x2="1660" y2="605"/>
+  <line class="line" x1="1560" y1="605" x2="1660" y2="605"/>
+  <text class="label" x="1600" y="590">(1,1)</text>
+
+  <line class="line" x1="740" y1="310" x2="1560" y2="605"/>
+  <text class="label" x="980" y="430">(0,N)</text>
+  <text class="label" x="1080" y="460">ACCOUNT to TRANSACTION 1:N</text>
+
+  <line class="lineTotal" x1="1770" y1="310" x2="1810" y2="335"/>
+  <line class="line" x1="1770" y1="310" x2="1810" y2="335"/>
+  <text class="label" x="1790" y="300">(1,1)</text>
+
+  <line class="lineTotal" x1="1770" y1="310" x2="1680" y2="335"/>
+  <line class="line" x1="1770" y1="310" x2="1680" y2="335"/>
+  <text class="label" x="1695" y="300">(1,1)</text>
+
+  <line class="line" x1="1850" y1="430" x2="1880" y2="560"/>
+  <text class="label" x="1875" y="500">(1,N)</text>
+  <line class="line" x1="1770" y1="560" x2="1770" y2="460"/>
+  <text class="label" x="1710" y="500">(0,1)</text>
+
+  <!-- CUSTOMER attributes -->
+  <ellipse class="attr" cx="70" cy="120" rx="72" ry="30"/><text class="attrText key" x="70" y="120">customer_id</text>
+  <ellipse class="attr" cx="230" cy="95" rx="62" ry="28"/><text class="attrText" x="230" y="95">name</text>
+  <ellipse class="attr" cx="170" cy="40" rx="70" ry="24"/><text class="attrText" x="170" y="40">first_name</text>
+  <ellipse class="attr" cx="230" cy="25" rx="72" ry="24"/><text class="attrText" x="230" y="25">middle_name</text>
+  <ellipse class="attr" cx="300" cy="40" rx="70" ry="24"/><text class="attrText" x="300" y="40">last_name</text>
+  <line class="line" x1="230" y1="67" x2="170" y2="58"/>
+  <line class="line" x1="230" y1="67" x2="230" y2="49"/>
+  <line class="line" x1="230" y1="67" x2="300" y2="58"/>
+
+  <ellipse class="attr" cx="420" cy="120" rx="78" ry="30"/><text class="attrText" x="420" y="120">address</text>
+  <ellipse class="attr" cx="360" cy="55" rx="52" ry="22"/><text class="attrText" x="360" y="55">street</text>
+  <ellipse class="attr" cx="420" cy="40" rx="45" ry="22"/><text class="attrText" x="420" y="40">city</text>
+  <ellipse class="attr" cx="480" cy="55" rx="45" ry="22"/><text class="attrText" x="480" y="55">state</text>
+  <ellipse class="attr" cx="545" cy="70" rx="65" ry="22"/><text class="attrText" x="545" y="70">postal_code</text>
+  <line class="line" x1="420" y1="92" x2="360" y2="77"/>
+  <line class="line" x1="420" y1="92" x2="420" y2="62"/>
+  <line class="line" x1="420" y1="92" x2="480" y2="77"/>
+  <line class="line" x1="420" y1="92" x2="545" y2="88"/>
+
+  <ellipse class="attr" cx="60" cy="350" rx="68" ry="28"/><text class="attrText" x="60" y="350">email</text>
+  <ellipse class="attr" cx="230" cy="360" rx="85" ry="30"/><ellipse class="attr" cx="230" cy="360" rx="76" ry="22" fill="none"/><text class="attrText" x="230" y="360">phone_no</text>
+  <ellipse class="attr dash" cx="400" cy="360" rx="60" ry="28" fill="#bdf2c8"/><text class="attrText" x="400" y="360">age</text>
+  <ellipse class="attr" cx="520" cy="360" rx="82" ry="28"/><text class="attrText" x="520" y="360">date_of_birth</text>
+  <line class="line" x1="150" y1="310" x2="90" y2="322"/>
+  <line class="line" x1="230" y1="310" x2="230" y2="330"/>
+  <line class="line" x1="310" y1="310" x2="380" y2="332"/>
+  <line class="line" x1="320" y1="270" x2="470" y2="350"/>
+  <line class="line" x1="230" y1="220" x2="70" y2="150"/>
+  <line class="line" x1="230" y1="220" x2="230" y2="123"/>
+  <line class="line" x1="230" y1="220" x2="420" y2="150"/>
+
+  <!-- ACCOUNT attributes -->
+  <ellipse class="attr" cx="630" cy="120" rx="70" ry="30"/><text class="attrText key" x="630" y="120">account_id</text>
+  <ellipse class="attr" cx="760" cy="145" rx="82" ry="30"/><text class="attrText" x="760" y="145">account_number</text>
+  <ellipse class="attr" cx="760" cy="350" rx="72" ry="28"/><text class="attrText" x="760" y="350">account_type</text>
+  <ellipse class="attr" cx="630" cy="390" rx="58" ry="24"/><text class="attrText" x="630" y="390">status</text>
+  <ellipse class="attr" cx="520" cy="420" rx="58" ry="24"/><text class="attrText" x="520" y="420">balance</text>
+  <line class="line" x1="630" y1="220" x2="630" y2="150"/>
+  <line class="line" x1="700" y1="220" x2="748" y2="172"/>
+  <line class="line" x1="690" y1="310" x2="745" y2="330"/>
+  <line class="line" x1="620" y1="310" x2="630" y2="366"/>
+  <line class="line" x1="560" y1="310" x2="530" y2="397"/>
+
+  <!-- BRANCH attributes -->
+  <ellipse class="attr" cx="930" cy="120" rx="62" ry="28"/><text class="attrText key" x="930" y="120">branch_id</text>
+  <ellipse class="attr" cx="1040" cy="120" rx="68" ry="28"/><text class="attrText" x="1040" y="120">branch_code</text>
+  <ellipse class="attr" cx="1120" cy="165" rx="72" ry="28"/><text class="attrText" x="1120" y="165">branch_name</text>
+  <ellipse class="attr" cx="1100" cy="350" rx="62" ry="24"/><text class="attrText" x="1100" y="350">location</text>
+  <line class="line" x1="980" y1="220" x2="940" y2="148"/>
+  <line class="line" x1="1020" y1="220" x2="1038" y2="148"/>
+  <line class="line" x1="1080" y1="220" x2="1110" y2="193"/>
+  <line class="line" x1="1050" y1="310" x2="1090" y2="328"/>
+
+  <!-- LOAN attributes -->
+  <ellipse class="attr" cx="1290" cy="120" rx="60" ry="26"/><text class="attrText key" x="1290" y="120">loan_id</text>
+  <ellipse class="attr" cx="1390" cy="120" rx="60" ry="26"/><text class="attrText" x="1390" y="120">loan_type</text>
+  <ellipse class="attr" cx="1490" cy="120" rx="78" ry="26"/><text class="attrText" x="1490" y="120">principal_amount</text>
+  <ellipse class="attr" cx="1510" cy="350" rx="68" ry="24"/><text class="attrText" x="1510" y="350">interest_rate</text>
+  <ellipse class="attr" cx="1400" cy="390" rx="56" ry="24"/><text class="attrText" x="1400" y="390">status</text>
+  <ellipse class="attr" cx="1290" cy="390" rx="62" ry="24"/><text class="attrText" x="1290" y="390">issued_date</text>
+  <ellipse class="attr" cx="1180" cy="350" rx="58" ry="24"/><text class="attrText" x="1180" y="350">due_date</text>
+  <line class="line" x1="1330" y1="220" x2="1300" y2="146"/>
+  <line class="line" x1="1390" y1="220" x2="1390" y2="146"/>
+  <line class="line" x1="1460" y1="220" x2="1485" y2="146"/>
+  <line class="line" x1="1460" y1="310" x2="1495" y2="328"/>
+  <line class="line" x1="1390" y1="310" x2="1400" y2="366"/>
+  <line class="line" x1="1330" y1="310" x2="1300" y2="366"/>
+  <line class="line" x1="1290" y1="310" x2="1190" y2="328"/>
+
+  <!-- TRANSFER attributes -->
+  <ellipse class="attr" cx="1770" cy="120" rx="64" ry="26"/><text class="attrText key" x="1770" y="120">transfer_id</text>
+  <ellipse class="attr" cx="1880" cy="150" rx="58" ry="24"/><text class="attrText" x="1880" y="150">amount</text>
+  <ellipse class="attr" cx="1930" cy="260" rx="75" ry="24"/><text class="attrText" x="1930" y="260">transfer_date</text>
+  <ellipse class="attr" cx="1930" cy="350" rx="82" ry="24"/><text class="attrText" x="1930" y="350">reference_note</text>
+  <line class="line" x1="1770" y1="220" x2="1770" y2="146"/>
+  <line class="line" x1="1840" y1="220" x2="1872" y2="172"/>
+  <line class="line" x1="1880" y1="250" x2="1900" y2="260"/>
+  <line class="line" x1="1850" y1="280" x2="1900" y2="335"/>
+
+  <!-- TRANSACTION attributes -->
+  <ellipse class="attr" cx="1660" cy="760" rx="78" ry="26"/><text class="attrText key" x="1660" y="760">transaction_id</text>
+  <ellipse class="attr" cx="1770" cy="770" rx="74" ry="26"/><text class="attrText" x="1770" y="770">transaction_type</text>
+  <ellipse class="attr" cx="1890" cy="760" rx="58" ry="24"/><text class="attrText" x="1890" y="760">amount</text>
+  <ellipse class="attr" cx="1960" cy="680" rx="78" ry="24"/><text class="attrText" x="1960" y="680">transaction_date</text>
+  <ellipse class="attr" cx="1960" cy="600" rx="66" ry="24"/><text class="attrText" x="1960" y="600">description</text>
+  <line class="line" x1="1700" y1="650" x2="1668" y2="735"/>
+  <line class="line" x1="1770" y1="650" x2="1770" y2="744"/>
+  <line class="line" x1="1840" y1="650" x2="1880" y2="740"/>
+  <line class="line" x1="1850" y1="620" x2="1920" y2="680"/>
+  <line class="line" x1="1850" y1="600" x2="1895" y2="600"/>
+
+  <!-- LOAN_PAYMENT attributes -->
+  <ellipse class="attr" cx="1200" cy="760" rx="72" ry="26"/><text class="attrText partialKey" x="1200" y="760">payment_no</text>
+  <ellipse class="attr" cx="1330" cy="790" rx="80" ry="24"/><text class="attrText" x="1330" y="790">payment_date</text>
+  <ellipse class="attr" cx="1480" cy="760" rx="72" ry="24"/><text class="attrText" x="1480" y="760">amount_paid</text>
+  <line class="line" x1="1320" y1="650" x2="1220" y2="740"/>
+  <line class="line" x1="1390" y1="650" x2="1340" y2="768"/>
+  <line class="line" x1="1460" y1="650" x2="1470" y2="738"/>
+
+  <!-- Legend -->
+  <rect x="60" y="980" width="2080" height="340" fill="#fff" stroke="#ddd" stroke-width="2"/>
+  <text x="90" y="1020" class="label">Legend (Conventional Symbols)</text>
+  <rect class="entity" x="90" y="1045" width="120" height="45"/><text class="small" x="150" y="1072">Strong Entity</text>
+  <rect class="entity" x="250" y="1045" width="120" height="45"/><rect class="entity" x="257" y="1052" width="106" height="31" fill="none"/><text class="small" x="310" y="1072">Weak Entity</text>
+  <polygon class="rel" points="430,1068 455,1048 480,1068 455,1088"/><text class="small" x="515" y="1072">Relationship</text>
+  <polygon class="rel" points="610,1068 635,1048 660,1068 635,1088"/><polygon points="616,1068 635,1053 654,1068 635,1083" fill="none" stroke="#111" stroke-width="2"/><text class="small" x="730" y="1072">Weak Relationship</text>
+  <ellipse class="attr" cx="860" cy="1068" rx="46" ry="18"/><text class="small" x="860" y="1072">single</text>
+  <ellipse class="attr" cx="980" cy="1068" rx="46" ry="18"/><ellipse class="attr" cx="980" cy="1068" rx="38" ry="12" fill="none"/><text class="small" x="980" y="1072">multi</text>
+  <ellipse class="attr dash" cx="1100" cy="1068" rx="48" ry="18" fill="#bdf2c8"/><text class="small" x="1100" y="1072">derived</text>
+  <text class="small key" x="1220" y="1072">underlined = key</text>
+  <text class="small partialKey" x="1380" y="1072">dashed underline = partial key</text>
+  <line class="lineTotal" x1="90" y1="1130" x2="180" y2="1130"/><line class="line" x1="90" y1="1130" x2="180" y2="1130"/><text class="small" x="240" y="1134">double line = total participation</text>
+  <line class="line" x1="500" y1="1130" x2="590" y2="1130"/><text class="small" x="680" y="1134">single line = partial participation</text>
+  <text class="small" x="90" y="1180">Cardinality and min-max are shown near each relationship edge (e.g., 1:N, M:N, (0,N), (1,1)).</text>
+  <text class="small" x="90" y="1210">Weak structure used here: LOAN_PAYMENT (weak entity) identified by HAS_PAYMENT with partial key payment_no.</text>
+</svg>
