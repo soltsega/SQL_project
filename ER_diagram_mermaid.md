@@ -1,4 +1,4 @@
-# Bank Database ER Diagram (Mermaid Compatible)
+# Bank Database ER Diagram
 
 ```mermaid
 erDiagram
@@ -79,23 +79,23 @@ erDiagram
         BIGINT transfer_id FK
     }
 
-    CUSTOMERS ||--|{ ACCOUNTS : "owns (1,N)-(1,1)"
-    CUSTOMERS ||--o{ LOANS : "borrows (0,N)-(1,1)"
-    CUSTOMERS ||--o{ CUSTOMER_PHONE : "has phone numbers (0,N)"
+    CUSTOMERS ||--|{ ACCOUNTS : owns
+    CUSTOMERS ||--o{ LOANS : borrows
+    CUSTOMERS ||--o{ CUSTOMER_PHONE : has
 
-    ACCOUNTS ||--o{ TRANSACTIONS : "records (0,N)-(1,1)"
-    ACCOUNTS ||--|{ ACCOUNT_BRANCHES : "mapped in junction"
-    BRANCHES ||--|{ ACCOUNT_BRANCHES : "mapped in junction"
+    ACCOUNTS ||--o{ TRANSACTIONS : records
+    ACCOUNTS ||--|{ ACCOUNT_BRANCHES : assigned_to
+    BRANCHES ||--|{ ACCOUNT_BRANCHES : contains
 
-    ACCOUNTS ||--o{ TRANSFERS : "sends (0,N)"
-    ACCOUNTS ||--o{ TRANSFERS : "receives (0,N)"
+    ACCOUNTS ||--o{ TRANSFERS : sends
+    ACCOUNTS ||--o{ TRANSFERS : receives
 
-    TRANSFERS ||--o{ TRANSACTIONS : "reflected by transfer txns (1,N)-(0,1)"
-    LOANS ||--|{ LOAN_PAYMENTS : "has payments (weak-style key: loan_id + payment_no)"
+    TRANSFERS ||--o{ TRANSACTIONS : links_to
+    LOANS ||--|{ LOAN_PAYMENTS : paid_by
 ```
 
 ## Notes
 
-- This file is fully Mermaid-compatible for Markdown preview.
-- Mermaid `erDiagram` does not support full Chen symbols (double oval, double rectangle, dashed underline) directly.
-- `LOAN_PAYMENTS` is modeled with composite key `(loan_id, payment_no)` to reflect weak-entity behavior logically.
+- Mermaid keeps this version lightweight for Markdown preview.
+- Use `ER_diagram_chen.svg` or `ER_diagram_chen_strict.svg` when you need full Chen/EER notation.
+- `LOAN_PAYMENTS` uses the composite key `(loan_id, payment_no)` to represent weak-entity behavior.
