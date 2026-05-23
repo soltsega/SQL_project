@@ -5,6 +5,15 @@
 -- It uses IF OBJECT_ID(...) IS NULL checks so it can be run safely without
 -- recreating objects that already exist.
 
+IF DB_ID('bank_database') IS NULL
+BEGIN
+    CREATE DATABASE bank_database;
+END;
+GO
+
+USE bank_database;
+GO
+
 BEGIN TRANSACTION;
 
 -- =========================
